@@ -7,6 +7,7 @@ import {
 } from "react-simple-maps";
 
 import allStates from "../data/allstates.json";
+import { changePhotos } from "../photoUtils/photoCardList";
 
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
@@ -43,7 +44,7 @@ const MapChart = ({ setTooltipContent, location, setLocation, photos, setPhotos}
                   onClick={() => {
                     const cur = allStates.find(s => s.val === geo.id);
                     setLocation(cur.id);
-                    // changePhotos(cur.id, photos, setPhotos);
+                    changePhotos(cur.id, photos, setPhotos);
                   }}
 
                   onMouseLeave={() => {

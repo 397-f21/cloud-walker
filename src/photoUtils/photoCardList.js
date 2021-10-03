@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import { UpdatePhotos } from '../utilities/firebase';
 import '../App.css';
 
+
 export const PhotoCardList = ({photos}) => {
+
+
+
   console.log(photos);
 
   return (

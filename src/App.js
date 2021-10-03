@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MapChart from './mapUtils/MapChart';
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
+import { PhotoCardList } from './photoUtils/photoCardList';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
       <div class="col-5">
         <div class="card m-3 p-2 mdb-color lighten-2 text-center z-depth-2">
           <h1> Location: {location}</h1>
-          {/* <PhotoCardList photos={photos}/> */}
+          <PhotoCardList photos={photos}/>
         </div>
       </div>
 
