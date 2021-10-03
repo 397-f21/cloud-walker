@@ -40,11 +40,11 @@ const MapChart = ({ setTooltipContent, location, setLocation, photos, setPhotos}
                     // setLocation(cur.id);
                   }}
                   
-                  // onClick={() => {
-                  //   const cur = allStates.find(s => s.val === geo.id);
-                  //   setLocation(cur.id);
-                  //   changePhotos(cur.id, photos, setPhotos);
-                  // }}
+                  onClick={() => {
+                    const cur = allStates.find(s => s.val === geo.id);
+                    setLocation(cur.id);
+                    // changePhotos(cur.id, photos, setPhotos);
+                  }}
 
                   onMouseLeave={() => {
                     setTooltipContent("");

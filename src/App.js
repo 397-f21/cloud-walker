@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import MapChart from './mapUtils/MapChart';
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
@@ -12,8 +12,14 @@ function App() {
 
   return (
     <div className="App">
-      <div class="card col-6 m-3 p-2">
+      <div class="col-5">
+        <div class="card m-3 p-2 mdb-color lighten-2 text-center z-depth-2">
+          <h1> Location: {location}</h1>
+          {/* <PhotoCardList photos={photos}/> */}
+        </div>
+      </div>
 
+      <div class="card col-6 m-3 p-2">
         <MapChart setTooltipContent={setContent} location={setLocation} setLocation={setLocation} photos={photos} setPhotos={setPhotos}/>
         <ReactTooltip>{content}</ReactTooltip>
       </div>
