@@ -23,7 +23,7 @@ function App() {
             </div>
           </div>
           <div className="col">
-            <div class="card m-3 p-2 mdb-color lighten-2 text-center z-depth-2">
+            <div class="card m-3 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">
               <h1> Location: {location}</h1>
               <PhotoCardList photos={photos} />
             </div>
