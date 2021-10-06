@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { PhotoCardList } from './photoUtils/photoCardList';
 import {useData} from "./utilities/firebase";
+import UploadPhoto from "./photoUtils/uploadPhoto";
 function App() {
   const folderName = 'userPhoto'
   const user = "tangefei";
@@ -33,6 +34,7 @@ function App() {
             </div>
           </div>
         </div>
+        <UploadPhoto location={location}></UploadPhoto>
       </div>
     </div>
   );
