@@ -6,7 +6,7 @@ import {getDownloadURL} from "firebase/storage";
 
 const storage = getStorage();
 
-const UploadPhoto = ({location}) => {
+const UploadPhoto = ({location,setPhotos}) => {
     const [uploadImage, setUploadImage] = useState('');
 
 
@@ -24,7 +24,7 @@ const UploadPhoto = ({location}) => {
         uploadBytes(storageRef, uploadImage).then((snapshot) => {
             console.log('Uploaded a blob or file!');
             alert('successful!');
-            saveDownloadUrl('tangefei', location, filePath);
+            saveDownloadUrl('tangefei', location, filePath,setPhotos);
         });
 
     }
@@ -41,10 +41,10 @@ const UploadPhoto = ({location}) => {
     );
 }
 
-const saveDownloadUrl = (user, location, filePath) => {
+const saveDownloadUrl = (user, location, filePath,setPhotos) => {
     getDownloadURL(ref(storage, filePath)).then((url) => {
         console.log("UpdatedPhotoURL:", url)
-        pushRealtimeDb(`userPhoto/${user}/${location}/`, url);
+        pushRealtimeDb(`userPhoto/${user}/${location}/`, url,setPhotos);
 
     });
 }

@@ -23,7 +23,7 @@ function App() {
               <div class="row row-header">
                 <div class="col-md-5 col-sm-12">
                   <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6" alt="new"></img>
-                </div> 
+                </div>
               </div>
           </div>
       </header>
@@ -41,7 +41,7 @@ function App() {
               <h1> Location: {location}</h1>
               {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos} /> }
             </div>
-              <UploadPhoto location={location}></UploadPhoto>
+              <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto>
           </div>
         </div>
       </div>

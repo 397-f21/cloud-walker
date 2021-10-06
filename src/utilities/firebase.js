@@ -33,7 +33,7 @@ export const setRealtimeDb = (path, content) => {
 }
 
 
-export const pushRealtimeDb = (path, content) => {
+export const pushRealtimeDb = (path, content, setPhotos) => {
     onValue(ref(database, path), (snapshot) => {
         let data = snapshot.val();
         console.log(data);
@@ -43,7 +43,8 @@ export const pushRealtimeDb = (path, content) => {
         }
         data.push(content);
         setRealtimeDb(path, data);
-    },{onlyOnce: true});
+        setPhotos(data);
+    }, {onlyOnce: true});
 
 
 }
