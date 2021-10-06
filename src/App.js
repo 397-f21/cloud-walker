@@ -6,7 +6,10 @@ import ReactTooltip from "react-tooltip";
 import { PhotoCardList } from './photoUtils/photoCardList';
 import {useData} from "./utilities/firebase";
 function App() {
-console.log(useData('/'));
+  const folderName = 'userPhoto'
+  const user = "tangefei";
+
+  const userData = useData('/userPhoto');
   const [content, setContent] = useState("");
   const [location, setLocation] = useState("");
   const [photos, setPhotos] = useState([]);
@@ -19,7 +22,7 @@ console.log(useData('/'));
         <div className="row">
           <div className="col-sm-12 col-md-5">
             <div className="card m-3 p-2">
-              <MapChart setTooltipContent={setContent} location={setLocation} setLocation={setLocation} photos={photos} setPhotos={setPhotos} />
+              <MapChart setTooltipContent={setContent} location={setLocation} setLocation={setLocation} newPhotos={userData[0] ? userData[0][folderName][user] : []} setPhotos={setPhotos} />
               <ReactTooltip>{content}</ReactTooltip>
             </div>
           </div>

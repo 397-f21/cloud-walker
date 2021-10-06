@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getStorage, listAll, getDownloadURL} from "firebase/storage";
+// import {getStorage} from "firebase/storage";
 import {useState, useEffect} from "react";
 import {getDatabase,ref,onValue} from "firebase/database";
 // Set the configuration for your app
@@ -23,28 +23,8 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
-const storage = getStorage(firebaseApp);
+// const storage = getStorage(firebaseApp);
 const database = getDatabase(firebaseApp);
-export const UpdatePhotos = (paths, photos, setPhotos) => {
-    console.log("UpdatePhoto called")
-
-    if (paths.length === 0) {
-        setPhotos([]);
-        return;
-    }
-
-    var results = [];
-
-    paths.map(path =>
-        getDownloadURL(ref(storage, path)).then((url) => {
-            console.log("UpdatedPhotoURL:", url)
-            results.push(url)
-        })
-    )
-    setPhotos(results);
-    return 0;
-}
-
 
 export const useData = (path, transform) => {
     const [data, setData] = useState();
@@ -52,8 +32,6 @@ export const useData = (path, transform) => {
     const [error, setError] = useState();
 
     useEffect(() => {
-
-        console.log(database);
         const dbRef = ref(database,'/');
         const devMode = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
         if (devMode) {

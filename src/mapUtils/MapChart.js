@@ -7,24 +7,11 @@ import {
 } from "react-simple-maps";
 
 import allStates from "../data/allstates.json";
-import { changePhotos } from "../photoUtils/photoCardList";
 
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const offsets = {
-  VT: [50, -8],
-  NH: [34, 2],
-  MA: [30, -1],
-  RI: [28, 2],
-  CT: [35, 10],
-  NJ: [34, 1],
-  DE: [33, 0],
-  MD: [47, 10],
-  DC: [49, 21]
-};
-
-const MapChart = ({ setTooltipContent, location, setLocation, photos, setPhotos}) => {
+const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhotos}) => {
   return (
     <div>
       <ComposableMap data-tip="" projectionConfig={{ scale: 0, center:[0, 0]}}>
@@ -44,7 +31,7 @@ const MapChart = ({ setTooltipContent, location, setLocation, photos, setPhotos}
                   onClick={() => {
                     const cur = allStates.find(s => s.val === geo.id);
                     setLocation(cur.id);
-                    changePhotos(cur.id, photos, setPhotos);
+                    setPhotos(newPhotos[cur.id] ? newPhotos[cur.id] : []);
                   }}
 
                   onMouseLeave={() => {
