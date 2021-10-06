@@ -41,9 +41,9 @@ function App() {
               <h1> Location: {location}</h1>
               {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos} /> }
             </div>
+              <UploadPhoto location={location}></UploadPhoto>
           </div>
         </div>
-        <UploadPhoto location={location}></UploadPhoto>
       </div>
     </div>
   );
