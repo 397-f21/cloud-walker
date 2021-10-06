@@ -4,14 +4,15 @@ import MapChart from './mapUtils/MapChart';
 import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { PhotoCardList } from './photoUtils/photoCardList';
-
+import {useData} from "./utilities/firebase";
 function App() {
-
+console.log(useData('/'));
   const [content, setContent] = useState("");
   const [location, setLocation] = useState("");
   const [photos, setPhotos] = useState([]);
 
   return (
+
     <div className="App">
       <h1 className="display-2">CloudWalker</h1>
       <div className="container">
