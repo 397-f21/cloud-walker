@@ -43,3 +43,15 @@
     transform: rotate(360deg);
   }
 }
+
+.jumbotron {
+  padding: 10px 10px 10px 10px;
+  margin: 0px auto;
+  background: rgb(234, 237, 238);
+  color: black;
+}
+
+.logo {
+  width: 270px;
+  height: 225px;
+}
