@@ -32,10 +32,10 @@ const UploadPhoto = ({location,setPhotos}) => {
     return (
         <div className="App">
             <center>
-                <input type="file" onChange={(e) => {
+                <input  type="file" onChange={(e) => {
                     setUploadImage(e.target.files[0])
                 }}/>
-                <button onClick={upload}>Upload</button>
+                <button class="btn btn-primary" onClick={upload}>Upload</button>
             </center>
         </div>
     );
