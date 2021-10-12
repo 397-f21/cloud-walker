@@ -16,7 +16,6 @@ function App() {
   const [photos, setPhotos] = useState([]);
 
   return (
-
     <div className="App">
       <header class="jumbotron">
           <div class="container">
@@ -32,13 +31,13 @@ function App() {
         <div className="row">
           <div className="col-sm-12 col-md-6">
             <div className="card m-2 p-2">
-              <MapChart setTooltipContent={setContent} location={setLocation} setLocation={setLocation} newPhotos={userData[0] ? userData[0][folderName][user] : []} setPhotos={setPhotos} />
+              <MapChart setTooltipContent={setContent} location={location} setLocation={setLocation} newPhotos={userData[0] ? userData[0][folderName][user] : []} setPhotos={setPhotos} />
               <ReactTooltip>{content}</ReactTooltip>
             </div>
           </div>
           <div className="col-sm-12 col-md-6">
             <div className="card m-2 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">
-              <h1> Location: {location}</h1>
+              <h1> Location: {location} </h1>
               {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos} /> }
             </div>
               <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto>
