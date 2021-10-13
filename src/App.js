@@ -28,13 +28,15 @@ function App() {
             <header class="jumbotron">
                 <div class="container">
                     <div class="row row-header">
-                        <div class="col-md-1 col-sm-1">
+                        <div class="col-md-4 col-sm-12">
                             <img class="logo"
                                  src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
                                  alt="new"></img>
                         </div>
-                        {/* I can't style sry */}
-                        <div className="col-md-12 col-sm-12">
+                        <div className="col-md-6 col-sm-6 align-self-end">
+                            {user ? `Hello, ${user.displayName}` : "Hello, please Sign In"}
+                        </div>
+                        <div className="col-md-2 col-sm-6 align-self-end">
                             <UserButton></UserButton>
                         </div>
                     </div>
