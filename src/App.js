@@ -52,13 +52,15 @@ function App() {
                                       setPhotos={setPhotos}/>
                             <ReactTooltip>{content}</ReactTooltip>
                         </div>
+                        <h3 className="display-6"> {location ? `Upload a photo at ${location}` : "Select a location to upload"}</h3>
+                        <br></br>
+                        {location ? <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto> : <> </>}
                     </div>
                     <div className="col-sm-12 col-md-6">
                         <div className="card m-2 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">
-                            <h1> Location: {location} </h1>
+                            <h1 className="display-6"> Location: {location} </h1>
                             {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos}/>}
                         </div>
-                        <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto>
                     </div>
                 </div>
             </div>
@@ -67,3 +69,6 @@ function App() {
 }
 
 export default App;
+
+// Select a location to upload
+// Upload a photo at {location}
