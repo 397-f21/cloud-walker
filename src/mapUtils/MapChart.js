@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import {
     ZoomableGroup,
     ComposableMap,
@@ -9,13 +9,15 @@ import allStates from "../data/allstates.json";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const MapChart = ({setTooltipContent, location, setLocation, newPhotos, setPhotos}) => {
+
+
+const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhotos }) => {
     return (
         <div>
-            <ComposableMap data-tip="" projectionConfig={{scale: 0, center: [0, 0]}}>
+            <ComposableMap data-tip="" projectionConfig={{ scale: 0, center: [0, 0] }}>
                 <ZoomableGroup center={[-115, 40]} zoom={2.9}>
                     <Geographies geography={geoUrl}>
-                        {({geographies}) =>
+                        {({ geographies }) =>
                             geographies.map(geo => (
                                 <Geography
                                     key={geo.rsmKey}
@@ -65,22 +67,18 @@ const getColor = (photos, allStates, id, location) => {
     if (cur.id === location) {
         return "#0174BE";
     }
-
+    const maxNumPic = Math.max(...allStates.map(state => photos[state.id] ? photos[state.id].length : 0))
     const numPic = photos ? (photos[cur.id] ? photos[cur.id].length : 0) : 0;
-    return numPic > 7 ? "#782618" : colorRange[numPic];
+    const rgb = `rgb(${numPic > 0
+        ? lightred.map((item, index) => item - (numPic / maxNumPic) * difference[index]).join(',')
+        : grey.join(',')})`
+    return rgb
 
 }
 
-const colorRange = [
-    "#D6D6DA",
-    "#ffcec5",
-    "#ffad9f",
-    "#ff8a75",
-    "#ff5533",
-    "#e2492d",
-    "#be3d26",
-    "#9a311f",
-    "#782618"
-]
+const grey = [218, 214, 214]
+const red = [255, 0, 0]
+const lightred = [237, 229, 149]
+const difference = lightred.map((item, index) => item - red[index])
 
 export default memo(MapChart);
