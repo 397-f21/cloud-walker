@@ -37,7 +37,7 @@ function App() {
                             {user ? `Hello, ${user.displayName}` : "Hello, please Sign In"}
                         </div>
                         <div className="col-md-2 col-sm-6 align-self-end">
-                            <UserButton></UserButton>
+                            <UserButton setPhotos={setPhotos}></UserButton>
                         </div>
                     </div>
                 </div>

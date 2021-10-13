@@ -1,29 +1,34 @@
 import {signInWithGoogle, signOut, useUserState} from "../utilities/firebase";
 
 
-const SignInButton = () => (
-    <button className="btn btn-secondary btn-sm"
-            onClick={() => signInWithGoogle()}>
-        Sign In
-    </button>
-);
-
-
-const SignOuButton = () => (
-    <button className="btn btn-secondary btn-sm"
-            onClick={() => signOut()}>
-        Sign Out
-    </button>
-);
-
-export const UserButton = () => {
-    const [user] = useUserState();
-    console.log(user);
+const SignInButton = () => {
     return (
-
-        <div>
-            {user ? <SignOuButton/> : <SignInButton/>}
-        </div>
+        <button className="btn btn-secondary btn-sm"
+                onClick={() => signInWithGoogle()}>
+            Sign In
+        </button>
     )
-        ;
+};
+
+
+const SignOuButton = ({setPhotos}) => {
+
+    return (
+        <button className="btn btn-secondary btn-sm"
+                onClick={() => {
+                    setPhotos([]);
+                    signOut();
+                }}>
+            Sign Out
+        </button>
+    )
+};
+
+export const UserButton = ({setPhotos}) => {
+    const [user] = useUserState();
+    return (
+        <div>
+            {user ? <SignOuButton setPhotos={setPhotos}/> : <SignInButton/>}
+        </div>
+    );
 }
