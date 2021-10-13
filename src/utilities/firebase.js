@@ -47,7 +47,7 @@ export const useUserState = () => {
 
 const firebaseSignOut = () => signOut(getAuth(firebaseApp));
 
-export { firebaseSignOut as signOut };
+export {firebaseSignOut as signOut};
 
 // append a content to the array at path
 export const pushRealtimeDb = (path, content, setPhotos) => {
