@@ -67,7 +67,7 @@ const getColor = (photos, allStates, id, location) => {
     if (cur.id === location) {
         return "#0174BE";
     }
-    const maxNumPic = Math.max(...allStates.map(state => photos[state.id] ? photos[state.id].length : 0))
+    const maxNumPic = Math.max(...allStates.map(state => photos && photos[state.id] ? photos[state.id].length : 0))
     const numPic = photos ? (photos[cur.id] ? photos[cur.id].length : 0) : 0;
     const rgb = `rgb(${numPic > 0
         ? lightred.map((item, index) => item - (numPic / maxNumPic) * difference[index]).join(',')
