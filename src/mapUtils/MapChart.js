@@ -22,18 +22,19 @@ const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhot
 
                   // Color Each location base on the number of photos
                   fill = {getColor(newPhotos, allStates, geo.id, location)}
-                    
+
                   geography={geo}
                   onMouseEnter={() => {
                     const cur = allStates.find(s => s.val === geo.id);
-                    setTooltipContent(`${cur.id}: You have ${newPhotos[cur.id] ? newPhotos[cur.id].length : 0} pictures here`);
+                        setTooltipContent(`${cur.id}: You have ${newPhotos?(newPhotos[cur.id] ? newPhotos[cur.id].length : 0):0} pictures here`);
                   }}
-                  
+
                   onClick={() => {
                     const cur = allStates.find(s => s.val === geo.id);
                     setLocation(cur.id);
-                    setPhotos(newPhotos[cur.id] ? newPhotos[cur.id] : []);
-                  }}
+                        setPhotos(newPhotos?(newPhotos[cur.id] ? newPhotos[cur.id] : []):[]);
+                    }
+                  }
 
                   onMouseLeave={() => {
                     setTooltipContent("");
@@ -64,7 +65,8 @@ const getColor = (photos, allStates, id, location) => {
   if (cur.id === location) {
     return "#0174BE";
   }
-  const numPic = photos[cur.id] ? photos[cur.id].length : 0;
+
+  const numPic = photos?(photos[cur.id] ? photos[cur.id].length : 0):0;
   return numPic > 7 ? "#782618" : colorRange[numPic];
 
 }

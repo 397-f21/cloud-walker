@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {getStorage, uploadBytes, ref} from "firebase/storage";
-import {pushRealtimeDb, setRealtimeDb} from "../utilities/firebase";
+import {pushRealtimeDb, setRealtimeDb, useUserState} from "../utilities/firebase";
 import {getDownloadURL} from "firebase/storage";
 
 
@@ -8,11 +8,18 @@ const storage = getStorage();
 
 const UploadPhoto = ({location,setPhotos}) => {
     const [uploadImage, setUploadImage] = useState('');
-
+    const [user] = useUserState();
 
     const upload = () => {
+        if(!user){
+            alert('Please login to access your beautiful memories!');
+            return;
+        }
+        // TODO displayName or uid?
+        const userName = user.displayName;
+
         if (location === '') {
-            alert('plz select a location on the map first!');
+            alert('Please select a location on the map first!');
             return;
         }
         if (uploadImage === '')
@@ -24,7 +31,7 @@ const UploadPhoto = ({location,setPhotos}) => {
         uploadBytes(storageRef, uploadImage).then((snapshot) => {
             console.log('Uploaded a blob or file!');
             alert('successful!');
-            saveDownloadUrl('tangefei', location, filePath,setPhotos);
+            saveDownloadUrl(userName, location, filePath,setPhotos);
         });
 
     }

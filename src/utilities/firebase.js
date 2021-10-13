@@ -3,6 +3,7 @@ import {initializeApp} from "firebase/app";
 import {useState, useEffect} from "react";
 import {getDatabase, ref, onValue, set, push} from "firebase/database";
 import {getDownloadURL, getStorage} from "firebase/storage";
+import {getAuth, GoogleAuthProvider, onIdTokenChanged, signInWithPopup, signOut} from 'firebase/auth';
 import data from "bootstrap/js/src/dom/data";
 // Set the configuration for your app
 // TODO: Replace with your app's config object
@@ -31,8 +32,24 @@ const database = getDatabase(firebaseApp);
 export const setRealtimeDb = (path, content) => {
     set(ref(database, path), content)
 }
+export const signInWithGoogle = () => {
+    signInWithPopup(getAuth(firebaseApp), new GoogleAuthProvider());
+};
+export const useUserState = () => {
+    const [user, setUser] = useState();
 
+    useEffect(() => {
+        onIdTokenChanged(getAuth(firebaseApp), setUser);
+    }, []);
 
+    return [user];
+};
+
+const firebaseSignOut = () => signOut(getAuth(firebaseApp));
+
+export { firebaseSignOut as signOut };
+
+// append a content to the array at path
 export const pushRealtimeDb = (path, content, setPhotos) => {
     onValue(ref(database, path), (snapshot) => {
         let data = snapshot.val();
