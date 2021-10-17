@@ -51,21 +51,7 @@ const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhot
                                     //         fill: "#0174BE",
                                     //         outline: "none"
                                     //     }
-                                    // }}
-                                    style={{
-                                      default: {
-                                        fill: getColor(newPhotos, allStates, geo.id, location),
-                                        outline: "none"
-                                      },
-                                      hover: {
-                                        fill: "#0174BE",
-                                        outline: "none"
-                                      },
-                                      pressed: {
-                                        fill: "#E42",
-                                        outline: "none"
-                                      }
-                                    }}
+                                    // }
 
 
                                 />
