@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
 import {
     ZoomableGroup,
     ComposableMap,
@@ -10,14 +10,13 @@ import allStates from "../data/allstates.json";
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 
-
-const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhotos }) => {
+const MapChart = ({setTooltipContent, location, setLocation, newPhotos, setPhotos}) => {
     return (
         <div>
-            <ComposableMap data-tip="" projectionConfig={{ scale: 0, center: [0, 0] }}>
+            <ComposableMap data-tip="" projectionConfig={{scale: 0, center: [0, 0]}}>
                 <ZoomableGroup center={[-115, 40]} zoom={2.9}>
                     <Geographies geography={geoUrl}>
-                        {({ geographies }) =>
+                        {({geographies}) =>
                             geographies.map(geo => (
                                 <Geography
                                     key={geo.rsmKey}
@@ -42,17 +41,20 @@ const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhot
                                         setTooltipContent("");
                                     }}
 
-                                    // style={{
-                                    //     hover: {
-                                    //         fill: "#0174BE",
-                                    //         outline: "none"
-                                    //     },
-                                    //     pressed: {
-                                    //         fill: "#0174BE",
-                                    //         outline: "none"
-                                    //     }
-                                    // }
-
+                                    style={{
+                                        default: {
+                                            fill: getColor(newPhotos, allStates, geo.id, location),
+                                            outline: "none"
+                                        },
+                                        hover: {
+                                            fill: "#0174BE",
+                                            outline: "none"
+                                        },
+                                        pressed: {
+                                            fill: "#E42",
+                                            outline: "none"
+                                        }
+                                    }}
 
                                 />
                             ))
