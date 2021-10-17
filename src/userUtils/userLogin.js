@@ -1,34 +1,36 @@
-import {signInWithGoogle, signOut, useUserState} from "../utilities/firebase";
+import { signInWithGoogle, signOut, useUserState } from "../utilities/firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const SignInButton = () => {
     return (
-        <button className="btn btn-secondary btn-sm"
-                onClick={() => signInWithGoogle()}>
+        <button type="button" className="btn btn-primary btn-lg btn-block col-12"
+            onClick={() => signInWithGoogle()}>
             Sign In With Google
         </button>
     )
 };
 
 
-const SignOuButton = ({setPhotos}) => {
+const SignOuButton = ({ setPhotos }) => {
 
     return (
-        <button className="btn btn-secondary btn-sm"
-                onClick={() => {
-                    setPhotos([]);
-                    signOut();
-                }}>
+        <button className="btn btn-outline-secondary btn-sm"
+            onClick={() => {
+                setPhotos([]);
+                signOut();
+            }}>
             Sign Out
         </button>
     )
 };
 
-export const UserButton = ({setPhotos}) => {
+export const UserButton = ({ setPhotos }) => {
     const [user] = useUserState();
     return (
-        <div>
-            {user ? <SignOuButton setPhotos={setPhotos}/> : <SignInButton/>}
-        </div>
+        <>
+            {user ? <SignOuButton setPhotos={setPhotos} /> : <SignInButton />}
+        </>
     );
 }

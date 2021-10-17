@@ -1,12 +1,11 @@
-import {useState} from 'react';
-import {getStorage, uploadBytes, ref} from "firebase/storage";
-import {pushRealtimeDb, setRealtimeDb, useUserState} from "../utilities/firebase";
-import {getDownloadURL} from "firebase/storage";
-import uuid from 'react-uuid'
+import { useState } from 'react';
+import { getStorage, uploadBytes, ref } from "firebase/storage";
+import { pushRealtimeDb, setRealtimeDb, useUserState } from "../utilities/firebase";
+import { getDownloadURL } from "firebase/storage";
 
 const storage = getStorage();
 
-const UploadPhoto = ({location, setPhotos}) => {
+const UploadPhoto = ({ location, setPhotos }) => {
     const [uploadImage, setUploadImage] = useState('');
     const [user] = useUserState();
 
@@ -45,7 +44,7 @@ const UploadPhoto = ({location, setPhotos}) => {
             <center>
                 <input id={"fileInput"} type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => {
                     setUploadImage(e.target.files[0])
-                }}/>
+                }} />
                 <button className="btn btn-primary" onClick={upload}>Upload</button>
             </center>
         </div>
