@@ -46,14 +46,14 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
-                        <div className="card m-2 p-2 map">
+                        <div className="card m-2 p-2">
                             <MapChart setTooltipContent={setContent} location={location} setLocation={setLocation}
                                 newPhotos={userData[0] ? userData[0][folderName][userName] : []}
                                 setPhotos={setPhotos} />
                             <ReactTooltip>{content}</ReactTooltip>
                         </div>
                         {location ? <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto> : <> </>}
-                        <h3 className="display-6"> {location ? `Upload a photo at ${location}` : "Select a location to upload"}</h3>
+                        <h3 className="display-6"> {user ? (location ? `Upload a photo at ${location}` : "Select a location to upload") : "Please Sign in"}</h3>
                     </div>
                     <div className="col-sm-12 col-md-6">
                         <div className="card m-2 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">

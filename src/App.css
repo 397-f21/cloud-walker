@@ -14,8 +14,8 @@
 }
 
 .scroll {
-  max-height: 51vh;
-  height: 51vh;
+  max-height: 60vh;
+  height: 60vh;
   overflow-y: auto;
 }
 
@@ -56,7 +56,3 @@
   height: 180px;
 }
 
-.map {
-  max-height: 51vh;
-  height: 51vh;
-}
