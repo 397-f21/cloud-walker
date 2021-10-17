@@ -5,7 +5,7 @@ const SignInButton = () => {
     return (
         <button className="btn btn-secondary btn-sm"
                 onClick={() => signInWithGoogle()}>
-            Sign In
+            Sign In With Google
         </button>
     )
 };

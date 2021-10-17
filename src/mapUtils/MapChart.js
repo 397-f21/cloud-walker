@@ -23,7 +23,7 @@ const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhot
                                     key={geo.rsmKey}
 
                                     // Color Each location base on the number of photos
-                                    fill={getColor(newPhotos, allStates, geo.id, location)}
+                                    // fill={getColor(newPhotos, allStates, geo.id, location)}
 
                                     geography={geo}
                                     onMouseEnter={() => {
@@ -42,16 +42,32 @@ const MapChart = ({ setTooltipContent, location, setLocation, newPhotos, setPhot
                                         setTooltipContent("");
                                     }}
 
+                                    // style={{
+                                    //     hover: {
+                                    //         fill: "#0174BE",
+                                    //         outline: "none"
+                                    //     },
+                                    //     pressed: {
+                                    //         fill: "#0174BE",
+                                    //         outline: "none"
+                                    //     }
+                                    // }}
                                     style={{
-                                        hover: {
-                                            fill: "#0174BE",
-                                            outline: "none"
-                                        },
-                                        pressed: {
-                                            fill: "#0174BE",
-                                            outline: "none"
-                                        }
+                                      default: {
+                                        fill: getColor(newPhotos, allStates, geo.id, location),
+                                        outline: "none"
+                                      },
+                                      hover: {
+                                        fill: "#0174BE",
+                                        outline: "none"
+                                      },
+                                      pressed: {
+                                        fill: "#E42",
+                                        outline: "none"
+                                      }
                                     }}
+
+
                                 />
                             ))
                         }

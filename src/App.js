@@ -25,50 +25,102 @@ function App() {
 
     return (
         <div className="App">
-            <header class="jumbotron">
-                <div class="container">
-                    <div class="row row-header">
-                        <div class="col-md-4 col-sm-12">
-                            <img class="logo"
-                                 src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
-                                 alt="new"></img>
-                        </div>
-                        <div className="col-md-6 col-sm-6 align-self-end">
-                            {user ? `Hello, ${user.displayName}` : "Hello, please Sign In"}
-                        </div>
-                        <div className="col-md-2 col-sm-6 align-self-end">
-                            <UserButton setPhotos={setPhotos}></UserButton>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            {/* <h1 className="display-2">CloudWalker</h1> */}
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12 col-md-6">
-                        <div className="card m-2 p-2">
-                            <MapChart setTooltipContent={setContent} location={location} setLocation={setLocation}
-                                      newPhotos={userData[0] ? userData[0][folderName][userName] : []}
-                                      setPhotos={setPhotos}/>
-                            <ReactTooltip>{content}</ReactTooltip>
-                        </div>
-                        <h3 className="display-6"> {location ? `Upload a photo at ${location}` : "Select a location to upload"}</h3>
-                        <br></br>
-                        {location ? <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto> : <> </>}
-                    </div>
-                    <div className="col-sm-12 col-md-6">
-                        <div className="card m-2 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">
-                            <h1 className="display-6"> Location: {location} </h1>
-                            {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos}/>}
-                        </div>
-                    </div>
-                </div>
-            </div>
+          {user ? actualApp(user, setPhotos, setContent, location, setLocation, userData, folderName, userName, content, photos) : loginPage()}
         </div>
     );
 }
 
 export default App;
+
+const loginPage = (setPhotos) => {
+
+  return (
+  <div>
+  <header class="jumbotron">
+      <div class="container">
+          <div class="row row-header">
+              <div class="col-md-4 col-sm-12">
+                  <img class="logo"
+                      src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
+                      alt="new"></img>
+              </div>
+          </div>
+      </div>
+  </header>
+  <div class="card m-5 p-2">
+        Hello
+       <UserButton setPhotos={setPhotos}></UserButton>
+   </div>
+   </div>
+  //   <div class="col d-flex justify-content-center">
+  //         <header class="jumbotron">
+  //     <div class="container">
+  //         <div class="row row-header">
+  //             <div class="col-md-4 col-sm-12">
+  //                 <img class="logo"
+  //                     src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
+  //                     alt="new"></img>
+  //             </div>
+  //         </div>
+  //     </div>
+  // </header>
+  //     <div class="card m-5 p-2">
+  //       Hello
+  //       <UserButton setPhotos={setPhotos}></UserButton>
+  //     </div>
+  //   </div>
+  )
+
+}
+
+
+const actualApp = (user, setPhotos, setContent, location, setLocation, userData, folderName, userName, content, photos) => {
+
+  return (
+    <>
+      <header class="jumbotron">
+      <div class="container">
+          <div class="row row-header">
+              <div class="col-md-4 col-sm-12">
+                  <img class="logo"
+                      src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
+                      alt="new"></img>
+              </div>
+              <div className="col-md-6 col-sm-6 align-self-end">
+                  {user ? `Hello, ${user.displayName}` : "Hello, please Sign In"}
+              </div>
+              <div className="col-md-2 col-sm-6 align-self-end">
+                  <UserButton setPhotos={setPhotos}></UserButton>
+              </div>
+          </div>
+      </div>
+  </header>
+  {/* <h1 className="display-2">CloudWalker</h1> */}
+  <div className="container">
+      <div className="row">
+          <div className="col-sm-12 col-md-6">
+              <div className="card m-2 p-2">
+                <MapChart setTooltipContent={setContent} location={location} setLocation={setLocation}
+                          newPhotos={userData[0] ? userData[0][folderName][userName] : []}
+                          setPhotos={setPhotos}/>
+                <ReactTooltip>{content}</ReactTooltip>
+              </div>
+              <h3 className="display-6"> {location ? `Upload a photo at ${location}` : "Select a location to upload"}</h3>
+              <br></br>
+              {location ? <UploadPhoto location={location} setPhotos={setPhotos}></UploadPhoto> : <> </>}
+          </div>
+          <div className="col-sm-12 col-md-6">
+              <div className="card m-2 p-2 mdb-color lighten-2 text-center z-depth-2 scroll">
+                  <h1 className="display-6"> Location: {location} </h1>
+                  {photos.length === 0 ? "No Photo Available" : <PhotoCardList photos={photos}/>}
+              </div>
+          </div>
+      </div>
+  </div>
+  </>
+  )
+
+}
 
 // Select a location to upload
 // Upload a photo at {location}
