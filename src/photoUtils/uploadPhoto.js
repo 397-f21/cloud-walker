@@ -39,7 +39,7 @@ const UploadPhoto = ({location, setPhotos}) => {
     return (
         <div className="App">
             <center>
-                <input type="file" onChange={(e) => {
+                <input type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => {
                     setUploadImage(e.target.files[0])
                 }}/>
                 <button class="btn btn-primary" onClick={upload}>Upload</button>
