@@ -17,7 +17,6 @@ const UploadPhoto = ({location, setPhotos}) => {
         }
         // TODO displayName or uid?
         const userName = user.displayName;
-
         if (location === '') {
             alert('Please select a location on the map first!');
             return;
@@ -33,7 +32,11 @@ const UploadPhoto = ({location, setPhotos}) => {
             alert('successful!');
             document.getElementById("fileInput").value = '';
             saveDownloadUrl(userName, location, filePath, setPhotos);
+            console.log(uploadImage);
+
         });
+        setUploadImage('');
+
 
     }
 
