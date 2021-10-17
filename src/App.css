@@ -14,8 +14,8 @@
 }
 
 .scroll {
-  max-height: 60vh;
-  height: 60vh;
+  max-height: 51vh;
+  height: 51vh;
   overflow-y: auto;
 }
 
@@ -54,4 +54,9 @@
 .logo {
   width: 216px;
   height: 180px;
+}
+
+.map {
+  max-height: 51vh;
+  height: 51vh;
 }
