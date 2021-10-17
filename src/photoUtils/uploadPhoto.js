@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {getStorage, uploadBytes, ref} from "firebase/storage";
 import {pushRealtimeDb, setRealtimeDb, useUserState} from "../utilities/firebase";
 import {getDownloadURL} from "firebase/storage";
-
+import uuid from 'react-uuid'
 
 const storage = getStorage();
 
@@ -17,7 +17,6 @@ const UploadPhoto = ({location, setPhotos}) => {
         }
         // TODO displayName or uid?
         const userName = user.displayName;
-
         if (location === '') {
             alert('Please select a location on the map first!');
             return;
@@ -31,18 +30,23 @@ const UploadPhoto = ({location, setPhotos}) => {
         uploadBytes(storageRef, uploadImage).then((snapshot) => {
             console.log('Uploaded a blob or file!');
             alert('successful!');
+            document.getElementById("fileInput").value = '';
             saveDownloadUrl(userName, location, filePath, setPhotos);
+            console.log(uploadImage);
+
         });
+        setUploadImage('');
+
 
     }
 
     return (
         <div className="App">
             <center>
-                <input type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => {
+                <input id={"fileInput"} type="file" accept="image/png, image/gif, image/jpeg" onChange={(e) => {
                     setUploadImage(e.target.files[0])
                 }}/>
-                <button class="btn btn-primary" onClick={upload}>Upload</button>
+                <button className="btn btn-primary" onClick={upload}>Upload</button>
             </center>
         </div>
     );

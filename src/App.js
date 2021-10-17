@@ -1,12 +1,12 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapChart from './mapUtils/MapChart';
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import {PhotoCardList} from './photoUtils/photoCardList';
-import {SignInWithGoogle, useData, useUserState} from "./utilities/firebase";
+import { PhotoCardList } from './photoUtils/photoCardList';
+import { SignInWithGoogle, useData, useUserState } from "./utilities/firebase";
 import UploadPhoto from "./photoUtils/uploadPhoto";
-import {UserButton, userButton} from "./userUtils/userLogin";
+import { UserButton, userButton } from "./userUtils/userLogin";
 
 function App() {
     const folderName = 'userPhoto'
@@ -52,23 +52,6 @@ const loginPage = (setPhotos) => {
        <UserButton setPhotos={setPhotos}></UserButton>
    </div>
    </div>
-  //   <div class="col d-flex justify-content-center">
-  //         <header class="jumbotron">
-  //     <div class="container">
-  //         <div class="row row-header">
-  //             <div class="col-md-4 col-sm-12">
-  //                 <img class="logo"
-  //                     src="https://firebasestorage.googleapis.com/v0/b/cloud-walker-c72ce.appspot.com/o/logos%2Flogo2.jpeg?alt=media&token=17aa1e08-c11a-4db9-9719-150e7d083af6"
-  //                     alt="new"></img>
-  //             </div>
-  //         </div>
-  //     </div>
-  // </header>
-  //     <div class="card m-5 p-2">
-  //       Hello
-  //       <UserButton setPhotos={setPhotos}></UserButton>
-  //     </div>
-  //   </div>
   )
 
 }
